@@ -1,0 +1,60 @@
+spring:
+     security:
+           enabled: false
+           oauth2:
+                client:
+                     registration:
+                         EDWWebServices:
+                             client-id: aXv20FheOUyaSLrDuRfd
+                             client-secret: h0E2zViyZU0JNA7g4WeY
+                             authorization-grant-type: client_credentials
+                             scope: pacts360
+                     provider:
+                         EDWWebServices:
+                             token-uri: https://tjenie.ao.dcn/mga/sps/oauth/oauth20/token
+
+server:
+     servlet:
+          contextPath: /pacts360
+     error:
+          whitelabel:
+               enabled: false
+
+#---
+#
+#spring:
+#  profiles: local
+#  
+#---
+#
+#spring: 
+#  profiles: sso
+  
+#---
+
+#spring:
+#  profiles: test
+#  jpa:
+#    properties:
+#      hibernate:
+#        default_schema: OPENFFS
+      
+#---
+
+#spring:
+#  profiles: uat
+#  jjpa:
+#    properties:
+#      hibernate:
+#        default_schema: 
+      
+#---
+
+#spring:
+#  profiles: prod
+#  jpa:
+#    properties:
+#      hibernate:
+#        default_schema: 
+      
+#---

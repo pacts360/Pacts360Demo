@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration>
+	<Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Property>
+    </Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="${LOG_PATTERN}" />
+		</Console>
+
+		<RollingFile name="RollingFile"
+			fileName="./logs/pactsdemo.log"
+			filePattern="./logs/%d{yyyy-MM-dd}_%i.log">
+			<PatternLayout
+				pattern="${LOG_PATTERN}" />
+			<Policies>
+				<!-- rollover when the file reaches 10 MegaBytes -->
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="5"/>
+		</RollingFile>
+	</Appenders>
+
+	<Loggers>
+		<!-- LOG everything at INFO level -->
+		<Root level="info">
+			<AppenderRef ref="RollingFile" />
+			<AppenderRef ref="Console" />
+		</Root>
+<!-- 		<logger name="org.springframework.security.oauth2" level="info" /> 
+		<logger name="org.springframework.security.jwt" level="info" /> 
+		<logger name="org.springframework.web" level="debug" />
+		<logger name="org.springframework" level="info"/> -->
+<!-- 		<logger name="com.progress.appserv.services.security" level="info"/> -->
+	</Loggers>
+</Configuration>
